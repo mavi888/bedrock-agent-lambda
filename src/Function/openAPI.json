@@ -1,0 +1,53 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Weather Agent API",
+		"description": "Exposes the weather agent functionality",
+		"version": "1.0.0"
+	},
+
+	"paths": {
+		"/weather": {
+			"get": {
+				"description": "Get weather for a specific latitude, longitude that represents a city",
+				"parameters": [
+					{
+						"name": "latitude",
+						"in": "query",
+						"description": "latitude of the city in where to search the weather for",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "longitude",
+						"in": "query",
+						"description": "Longitude of the city in where to search the weather for",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Weather description for given city",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"weatherDescription": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

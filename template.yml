@@ -1,0 +1,37 @@
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  AgentARN:
+    Type: String
+    Default: ''
+
+Resources:
+  BedrockAgentTest:
+    Type: AWS::Serverless::Function
+    Properties:
+      Description: !Sub
+        - Stack ${AWS::StackName} Function ${ResourceName}
+        - ResourceName: BedrockAgentTest
+      CodeUri: src/Function
+      Handler: index.handler
+      Runtime: nodejs20.x
+      MemorySize: 128
+      Timeout: 30
+      Tracing: Active
+      Architectures:
+        - arm64
+
+  BedrockAgentTestLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Retain
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${BedrockAgentTest}
+
+  BedrockAgentTestPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !GetAtt BedrockAgentTest.Arn
+      Principal: bedrock.amazonaws.com
+      SourceAccount: ${AWS::AccountId}
+      SourceArn: !Ref AgentARN

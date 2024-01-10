@@ -1,0 +1,13 @@
+{
+  "name": "sam-bedrock-agent",
+  "version": "1.0.0",
+  "licence": "MIT",
+  "description": "_Infrastructure as code framework used_: AWS SAM _AWS Services used_: Amazon Bedrock Agents, Amazon Bedrock Knowledge Bases, AWS Lambda",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

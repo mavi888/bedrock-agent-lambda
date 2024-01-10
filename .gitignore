@@ -1,0 +1,8 @@
+out.json
+payload.json
+response.json
+samconfig.toml
+.vscode/settings.json
+src/.DS_Store
+src/Function/package-lock.json
+src/Function/node_modules/
